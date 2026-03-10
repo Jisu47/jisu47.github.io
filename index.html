@@ -3,65 +3,566 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jisu47</title>
+    <meta
+      name="description"
+      content="Jisu47의 GitHub Pages 개인 페이지입니다. 소개, 링크, 작업 기록을 정리하는 공간입니다."
+    >
+    <meta name="theme-color" content="#f3ece3">
+    <title>Jisu47 | GitHub Pages</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Noto+Sans+KR:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    >
     <style>
       :root {
         color-scheme: light;
-        --bg: #f6f3ee;
-        --fg: #1f2937;
-        --accent: #b45309;
-        --panel: #fffaf3;
+        --bg: #f3ece3;
+        --bg-deep: #eadfce;
+        --surface: rgba(255, 250, 244, 0.78);
+        --ink: #1d2430;
+        --muted: #5a6472;
+        --line: rgba(29, 36, 48, 0.1);
+        --accent: #b85c38;
+        --accent-2: #2f6b6f;
+        --shadow: 0 28px 90px rgba(29, 36, 48, 0.13);
       }
 
       * {
         box-sizing: border-box;
       }
 
+      html {
+        scroll-behavior: smooth;
+      }
+
       body {
         margin: 0;
         min-height: 100vh;
-        display: grid;
-        place-items: center;
-        padding: 24px;
-        font-family: "Segoe UI", sans-serif;
+        font-family: "Noto Sans KR", sans-serif;
+        color: var(--ink);
         background:
-          radial-gradient(circle at top, rgba(180, 83, 9, 0.14), transparent 35%),
-          linear-gradient(160deg, var(--bg), #efe7dc);
-        color: var(--fg);
+          radial-gradient(circle at 15% 20%, rgba(184, 92, 56, 0.18), transparent 30%),
+          radial-gradient(circle at 85% 15%, rgba(47, 107, 111, 0.18), transparent 24%),
+          linear-gradient(160deg, var(--bg), var(--bg-deep));
       }
 
-      main {
-        width: min(720px, 100%);
-        padding: 48px 32px;
-        border-radius: 24px;
-        background: var(--panel);
-        box-shadow: 0 24px 80px rgba(31, 41, 55, 0.12);
+      body::before,
+      body::after {
+        content: "";
+        position: fixed;
+        width: 280px;
+        height: 280px;
+        border-radius: 999px;
+        filter: blur(24px);
+        pointer-events: none;
+        opacity: 0.45;
+      }
+
+      body::before {
+        top: -70px;
+        right: -60px;
+        background: rgba(184, 92, 56, 0.18);
+      }
+
+      body::after {
+        bottom: -90px;
+        left: -70px;
+        background: rgba(47, 107, 111, 0.16);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 28px 0 40px;
+      }
+
+      .hero,
+      .panel {
+        background: var(--surface);
+        backdrop-filter: blur(14px);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        box-shadow: var(--shadow);
+      }
+
+      .hero {
+        position: relative;
+        overflow: hidden;
+        padding: 28px;
+        border-radius: 32px;
+        animation: rise 0.7s ease-out both;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        right: -70px;
+        bottom: -90px;
+        width: 280px;
+        height: 280px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(184, 92, 56, 0.16), transparent 70%);
+      }
+
+      .hero-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 40px;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 14px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.55);
+        font-size: 0.92rem;
+        color: var(--muted);
+      }
+
+      .badge::before {
+        content: "";
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--accent), #e4a36e);
+        box-shadow: 0 0 0 6px rgba(184, 92, 56, 0.12);
+      }
+
+      .mini-nav {
+        display: flex;
+        gap: 12px;
+        font-size: 0.95rem;
+        color: var(--muted);
+      }
+
+      .mini-nav a {
+        padding-bottom: 4px;
+        border-bottom: 1px solid transparent;
+      }
+
+      .mini-nav a:hover {
+        border-color: currentColor;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.6fr) minmax(280px, 0.9fr);
+        gap: 24px;
+        align-items: end;
+      }
+
+      .eyebrow {
+        margin: 0 0 16px;
+        font-size: 0.98rem;
+        color: var(--accent-2);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2 {
+        margin: 0;
+        font-family: "Instrument Serif", serif;
+        font-weight: 400;
+        line-height: 0.95;
       }
 
       h1 {
-        margin: 0 0 12px;
-        font-size: clamp(2.5rem, 7vw, 4.5rem);
-        line-height: 1;
+        max-width: 8ch;
+        font-size: clamp(4rem, 12vw, 7.6rem);
+        letter-spacing: -0.04em;
       }
 
-      p {
-        margin: 0;
-        font-size: 1.1rem;
+      .lead {
+        max-width: 58ch;
+        margin: 22px 0 0;
+        font-size: clamp(1.05rem, 2vw, 1.28rem);
+        line-height: 1.8;
+        color: var(--muted);
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 28px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        padding: 0 18px;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+      }
+
+      .button:hover {
+        transform: translateY(-1px);
+      }
+
+      .button.primary {
+        background: var(--ink);
+        color: #fff;
+      }
+
+      .button.secondary {
+        background: rgba(255, 255, 255, 0.6);
+        border-color: var(--line);
+      }
+
+      .hero-card {
+        padding: 22px;
+        border-radius: 24px;
+        border: 1px solid var(--line);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.74), rgba(255, 250, 244, 0.92));
+      }
+
+      .hero-card p {
+        margin: 0 0 18px;
+        color: var(--muted);
         line-height: 1.7;
       }
 
-      strong {
-        color: var(--accent);
+      .status-list {
+        display: grid;
+        gap: 14px;
+      }
+
+      .status-item {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .status-item:last-child {
+        padding-bottom: 0;
+        border-bottom: 0;
+      }
+
+      .status-item span {
+        color: var(--muted);
+        font-size: 0.94rem;
+      }
+
+      .status-item strong {
+        font-size: 1rem;
+      }
+
+      .content-grid {
+        display: grid;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        gap: 18px;
+        margin-top: 18px;
+      }
+
+      .panel {
+        padding: 28px;
+        border-radius: 28px;
+        animation: rise 0.8s ease-out both;
+      }
+
+      .panel:nth-child(2) {
+        animation-delay: 0.08s;
+      }
+
+      .panel:nth-child(3) {
+        animation-delay: 0.16s;
+      }
+
+      .panel h2 {
+        font-size: clamp(2rem, 4vw, 3rem);
+        margin-bottom: 18px;
+      }
+
+      .panel p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.85;
+      }
+
+      .intro {
+        grid-column: span 7;
+      }
+
+      .snapshot {
+        grid-column: span 5;
+      }
+
+      .stack {
+        display: grid;
+        gap: 14px;
+        margin-top: 18px;
+      }
+
+      .stack-card {
+        padding: 18px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.58);
+        border: 1px solid var(--line);
+      }
+
+      .stack-card strong {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 1rem;
+      }
+
+      .todo {
+        grid-column: span 6;
+      }
+
+      .links {
+        grid-column: span 6;
+      }
+
+      .checklist,
+      .link-list {
+        display: grid;
+        gap: 14px;
+        margin: 22px 0 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .checklist li,
+      .link-list a {
+        display: block;
+        padding: 16px 18px;
+        border-radius: 18px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.58);
+      }
+
+      .checklist li {
+        color: var(--muted);
+      }
+
+      .checklist strong,
+      .link-list strong {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--ink);
+      }
+
+      .link-list a {
+        transition: transform 0.2s ease, background 0.2s ease;
+      }
+
+      .link-list a:hover {
+        transform: translateY(-2px);
+        background: rgba(255, 255, 255, 0.78);
+      }
+
+      .footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-top: 18px;
+        padding: 10px 4px 0;
+        color: var(--muted);
+        font-size: 0.94rem;
+      }
+
+      .footer strong {
+        color: var(--ink);
+      }
+
+      @keyframes rise {
+        from {
+          opacity: 0;
+          transform: translateY(16px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 920px) {
+        .hero-grid,
+        .content-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .intro,
+        .snapshot,
+        .todo,
+        .links {
+          grid-column: auto;
+        }
+
+        .hero-top,
+        .footer {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .page {
+          width: min(100% - 20px, 1120px);
+          padding-top: 18px;
+        }
+
+        .hero,
+        .panel {
+          padding: 22px;
+          border-radius: 24px;
+        }
+
+        h1 {
+          font-size: clamp(3.3rem, 18vw, 5rem);
+        }
+
+        .mini-nav {
+          flex-wrap: wrap;
+        }
       }
     </style>
   </head>
   <body>
-    <main>
-      <h1>Jisu47</h1>
-      <p>
-        GitHub Pages 시작 페이지입니다. 이 폴더를 <strong>jisu47.github.io</strong>
-        저장소와 연결하면 개인 페이지로 바로 배포할 수 있습니다.
-      </p>
-    </main>
+    <div class="page">
+      <header class="hero" id="top">
+        <div class="hero-top">
+          <div class="badge">Personal Site on GitHub Pages</div>
+          <nav class="mini-nav" aria-label="바로가기">
+            <a href="#about">소개</a>
+            <a href="#next">다음 수정</a>
+            <a href="#links">링크</a>
+          </nav>
+        </div>
+
+        <div class="hero-grid">
+          <section>
+            <p class="eyebrow">Hello, this is</p>
+            <h1>Jisu47</h1>
+            <p class="lead">
+              작업 기록과 링크를 차분하게 쌓아가는 개인 페이지입니다.
+              GitHub Pages로 배포했고, 앞으로 소개와 프로젝트를 여기에 정리해둘 수 있습니다.
+            </p>
+            <div class="actions">
+              <a class="button primary" href="https://github.com/Jisu47" target="_blank" rel="noreferrer">
+                GitHub 프로필
+              </a>
+              <a
+                class="button secondary"
+                href="https://github.com/Jisu47/jisu47.github.io"
+                target="_blank"
+                rel="noreferrer"
+              >
+                사이트 소스 보기
+              </a>
+            </div>
+          </section>
+
+          <aside class="hero-card" aria-label="현재 상태">
+            <p>기본 배포는 끝났고, 이제 이 페이지를 실제 소개 페이지로 채우기만 하면 됩니다.</p>
+            <div class="status-list">
+              <div class="status-item">
+                <span>상태</span>
+                <strong>배포 완료</strong>
+              </div>
+              <div class="status-item">
+                <span>주소</span>
+                <strong>jisu47.github.io</strong>
+              </div>
+              <div class="status-item">
+                <span>현재 구조</span>
+                <strong>단일 HTML 정적 페이지</strong>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </header>
+
+      <main class="content-grid">
+        <section class="panel intro" id="about">
+          <h2>이 페이지는</h2>
+          <p>
+            처음 방문한 사람이 누군지, 어디를 보면 되는지 바로 이해할 수 있도록 구성했습니다.
+            복잡한 프레임워크 없이 <code>index.html</code> 하나만 수정하면 되기 때문에 유지도 단순합니다.
+            소개 문장, 프로젝트 카드, 연락 링크만 추가해도 충분히 개인 사이트 역할을 합니다.
+          </p>
+        </section>
+
+        <section class="panel snapshot" aria-label="활용 아이디어">
+          <h2>활용 방법</h2>
+          <div class="stack">
+            <div class="stack-card">
+              <strong>소개</strong>
+              한 줄 소개와 현재 관심사, 사용하는 기술을 적어두면 시작 페이지가 됩니다.
+            </div>
+            <div class="stack-card">
+              <strong>프로젝트</strong>
+              GitHub 저장소, 데모 링크, 짧은 설명만 넣어도 포트폴리오처럼 보입니다.
+            </div>
+            <div class="stack-card">
+              <strong>연결</strong>
+              이메일, 블로그, SNS를 추가해 방문자가 바로 연락할 수 있게 만들 수 있습니다.
+            </div>
+          </div>
+        </section>
+
+        <section class="panel todo" id="next">
+          <h2>다음 수정</h2>
+          <ul class="checklist">
+            <li>
+              <strong>문장 바꾸기</strong>
+              현재 소개 문장을 본인 소개와 활동 내용으로 바꾸면 페이지 성격이 분명해집니다.
+            </li>
+            <li>
+              <strong>프로젝트 추가</strong>
+              대표 저장소 2~3개만 골라 제목, 설명, 링크를 넣는 것이 가장 효과적입니다.
+            </li>
+            <li>
+              <strong>연락처 연결</strong>
+              GitHub 외에 메일이나 블로그 주소를 추가하면 방문 동선이 훨씬 좋아집니다.
+            </li>
+          </ul>
+        </section>
+
+        <section class="panel links" id="links">
+          <h2>링크</h2>
+          <div class="link-list">
+            <a href="https://jisu47.github.io" target="_blank" rel="noreferrer">
+              <strong>Live Site</strong>
+              https://jisu47.github.io
+            </a>
+            <a href="https://github.com/Jisu47" target="_blank" rel="noreferrer">
+              <strong>GitHub Profile</strong>
+              github.com/Jisu47
+            </a>
+            <a href="https://github.com/Jisu47/jisu47.github.io" target="_blank" rel="noreferrer">
+              <strong>Repository</strong>
+              github.com/Jisu47/jisu47.github.io
+            </a>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <span>Built with GitHub Pages</span>
+        <strong>Jisu47</strong>
+      </footer>
+    </div>
   </body>
 </html>
