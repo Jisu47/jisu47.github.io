@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jisu47</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f6f3ee;
+        --fg: #1f2937;
+        --accent: #b45309;
+        --panel: #fffaf3;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        font-family: "Segoe UI", sans-serif;
+        background:
+          radial-gradient(circle at top, rgba(180, 83, 9, 0.14), transparent 35%),
+          linear-gradient(160deg, var(--bg), #efe7dc);
+        color: var(--fg);
+      }
+
+      main {
+        width: min(720px, 100%);
+        padding: 48px 32px;
+        border-radius: 24px;
+        background: var(--panel);
+        box-shadow: 0 24px 80px rgba(31, 41, 55, 0.12);
+      }
+
+      h1 {
+        margin: 0 0 12px;
+        font-size: clamp(2.5rem, 7vw, 4.5rem);
+        line-height: 1;
+      }
+
+      p {
+        margin: 0;
+        font-size: 1.1rem;
+        line-height: 1.7;
+      }
+
+      strong {
+        color: var(--accent);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Jisu47</h1>
+      <p>
+        GitHub Pages 시작 페이지입니다. 이 폴더를 <strong>Jisu47.github.io</strong>
+        저장소와 연결하면 개인 페이지로 바로 배포할 수 있습니다.
+      </p>
+    </main>
+  </body>
+</html>
