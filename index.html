@@ -1,32 +1,39 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta
       name="description"
-      content="Jisu47의 GitHub Pages 개인 페이지입니다. 소개, 링크, 작업 기록을 정리하는 공간입니다."
+      content="Jisu47 personal site on GitHub Pages with a structured sidebar, project sections, and notes."
     >
-    <meta name="theme-color" content="#f3ece3">
-    <title>Jisu47 | GitHub Pages</title>
+    <meta name="theme-color" content="#f8f7f6">
+    <title>Jisu47 | Personal Site</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Noto+Sans+KR:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     >
     <style>
       :root {
         color-scheme: light;
-        --bg: #f3ece3;
-        --bg-deep: #eadfce;
-        --surface: rgba(255, 250, 244, 0.78);
-        --ink: #1d2430;
-        --muted: #5a6472;
-        --line: rgba(29, 36, 48, 0.1);
-        --accent: #b85c38;
-        --accent-2: #2f6b6f;
-        --shadow: 0 28px 90px rgba(29, 36, 48, 0.13);
+        --bg-primary: #ffffff;
+        --bg-secondary: #f8f7f6;
+        --bg-card: #ffffff;
+        --bg-hover: #f3f2f1;
+        --text-primary: #1c1917;
+        --text-secondary: #57534e;
+        --text-muted: #a8a29e;
+        --accent: #1f3c63;
+        --accent-hover: #142745;
+        --accent-soft: #edf2f8;
+        --border: #e7e5e4;
+        --border-strong: #d6d3d1;
+        --sidebar-width: 276px;
+        --max-width: 980px;
+        --radius: 8px;
+        --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06);
       }
 
       * {
@@ -40,529 +47,951 @@
       body {
         margin: 0;
         min-height: 100vh;
-        font-family: "Noto Sans KR", sans-serif;
-        color: var(--ink);
-        background:
-          radial-gradient(circle at 15% 20%, rgba(184, 92, 56, 0.18), transparent 30%),
-          radial-gradient(circle at 85% 15%, rgba(47, 107, 111, 0.18), transparent 24%),
-          linear-gradient(160deg, var(--bg), var(--bg-deep));
-      }
-
-      body::before,
-      body::after {
-        content: "";
-        position: fixed;
-        width: 280px;
-        height: 280px;
-        border-radius: 999px;
-        filter: blur(24px);
-        pointer-events: none;
-        opacity: 0.45;
-      }
-
-      body::before {
-        top: -70px;
-        right: -60px;
-        background: rgba(184, 92, 56, 0.18);
-      }
-
-      body::after {
-        bottom: -90px;
-        left: -70px;
-        background: rgba(47, 107, 111, 0.16);
+        font-family: "IBM Plex Sans KR", sans-serif;
+        line-height: 1.7;
+        color: var(--text-primary);
+        background: var(--bg-primary);
       }
 
       a {
-        color: inherit;
+        color: var(--accent);
         text-decoration: none;
       }
 
-      .page {
-        width: min(1120px, calc(100% - 32px));
-        margin: 0 auto;
-        padding: 28px 0 40px;
+      a:hover {
+        color: var(--accent-hover);
       }
 
-      .hero,
-      .panel {
-        background: var(--surface);
-        backdrop-filter: blur(14px);
-        border: 1px solid rgba(255, 255, 255, 0.5);
-        box-shadow: var(--shadow);
-      }
-
-      .hero {
-        position: relative;
-        overflow: hidden;
-        padding: 28px;
-        border-radius: 32px;
-        animation: rise 0.7s ease-out both;
-      }
-
-      .hero::after {
-        content: "";
-        position: absolute;
-        right: -70px;
-        bottom: -90px;
-        width: 280px;
-        height: 280px;
-        border-radius: 50%;
-        background: radial-gradient(circle, rgba(184, 92, 56, 0.16), transparent 70%);
-      }
-
-      .hero-top {
+      .layout-wrapper {
         display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 16px;
-        margin-bottom: 40px;
+        min-height: 100vh;
       }
 
-      .badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        padding: 10px 14px;
-        border-radius: 999px;
-        border: 1px solid var(--line);
-        background: rgba(255, 255, 255, 0.55);
-        font-size: 0.92rem;
-        color: var(--muted);
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: var(--sidebar-width);
+        height: 100vh;
+        overflow-y: auto;
+        padding: 32px 20px;
+        background: var(--bg-secondary);
+        border-right: 1px solid var(--border);
+        z-index: 20;
       }
 
-      .badge::before {
-        content: "";
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, var(--accent), #e4a36e);
-        box-shadow: 0 0 0 6px rgba(184, 92, 56, 0.12);
+      .profile-section {
+        text-align: center;
+        margin-bottom: 28px;
       }
 
-      .mini-nav {
-        display: flex;
-        gap: 12px;
-        font-size: 0.95rem;
-        color: var(--muted);
-      }
-
-      .mini-nav a {
-        padding-bottom: 4px;
-        border-bottom: 1px solid transparent;
-      }
-
-      .mini-nav a:hover {
-        border-color: currentColor;
-      }
-
-      .hero-grid {
+      .profile-avatar {
         display: grid;
-        grid-template-columns: minmax(0, 1.6fr) minmax(280px, 0.9fr);
-        gap: 24px;
-        align-items: end;
-      }
-
-      .eyebrow {
-        margin: 0 0 16px;
-        font-size: 0.98rem;
-        color: var(--accent-2);
+        place-items: center;
+        width: 144px;
+        height: 144px;
+        margin: 0 auto 14px;
+        border: 3px solid var(--border-strong);
+        border-radius: 12px;
+        background:
+          linear-gradient(135deg, rgba(31, 60, 99, 0.96), rgba(54, 94, 140, 0.9)),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent);
+        color: #fff;
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 2rem;
+        font-weight: 500;
         letter-spacing: 0.08em;
-        text-transform: uppercase;
+        box-shadow: var(--shadow-sm);
       }
 
-      h1,
-      h2 {
+      .profile-name {
+        margin: 0 0 4px;
+        font-size: 1.45rem;
+        line-height: 1.2;
+      }
+
+      .profile-title {
         margin: 0;
-        font-family: "Instrument Serif", serif;
-        font-weight: 400;
-        line-height: 0.95;
+        color: #78716c;
+        font-size: 0.86rem;
+        line-height: 1.55;
       }
 
-      h1 {
-        max-width: 8ch;
-        font-size: clamp(4rem, 12vw, 7.6rem);
-        letter-spacing: -0.04em;
-      }
-
-      .lead {
-        max-width: 58ch;
-        margin: 22px 0 0;
-        font-size: clamp(1.05rem, 2vw, 1.28rem);
-        line-height: 1.8;
-        color: var(--muted);
-      }
-
-      .actions {
+      .social-links {
         display: flex;
+        justify-content: center;
         flex-wrap: wrap;
-        gap: 12px;
-        margin-top: 28px;
+        gap: 8px;
+        margin-top: 16px;
       }
 
-      .button {
+      .social-link {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        min-height: 48px;
-        padding: 0 18px;
+        min-width: 44px;
+        height: 34px;
+        padding: 0 10px;
+        border: 1px solid var(--border-strong);
         border-radius: 999px;
-        border: 1px solid transparent;
-        transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+        background: #fff;
+        color: var(--text-secondary);
+        font-size: 0.78rem;
+        font-weight: 500;
       }
 
-      .button:hover {
-        transform: translateY(-1px);
+      .social-link:hover {
+        border-color: var(--accent);
+        color: var(--accent);
       }
 
-      .button.primary {
-        background: var(--ink);
-        color: #fff;
+      .nav-section,
+      .side-card {
+        margin-bottom: 22px;
       }
 
-      .button.secondary {
-        background: rgba(255, 255, 255, 0.6);
-        border-color: var(--line);
+      .nav-title,
+      .side-card-title {
+        margin: 0 0 8px;
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 0.72rem;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--text-muted);
       }
 
-      .hero-card {
-        padding: 22px;
-        border-radius: 24px;
-        border: 1px solid var(--line);
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0.74), rgba(255, 250, 244, 0.92));
-      }
-
-      .hero-card p {
-        margin: 0 0 18px;
-        color: var(--muted);
-        line-height: 1.7;
-      }
-
-      .status-list {
-        display: grid;
-        gap: 14px;
-      }
-
-      .status-item {
-        display: flex;
-        align-items: baseline;
-        justify-content: space-between;
-        gap: 16px;
-        padding-bottom: 12px;
-        border-bottom: 1px solid var(--line);
-      }
-
-      .status-item:last-child {
-        padding-bottom: 0;
-        border-bottom: 0;
-      }
-
-      .status-item span {
-        color: var(--muted);
-        font-size: 0.94rem;
-      }
-
-      .status-item strong {
-        font-size: 1rem;
-      }
-
-      .content-grid {
-        display: grid;
-        grid-template-columns: repeat(12, minmax(0, 1fr));
-        gap: 18px;
-        margin-top: 18px;
-      }
-
-      .panel {
-        padding: 28px;
-        border-radius: 28px;
-        animation: rise 0.8s ease-out both;
-      }
-
-      .panel:nth-child(2) {
-        animation-delay: 0.08s;
-      }
-
-      .panel:nth-child(3) {
-        animation-delay: 0.16s;
-      }
-
-      .panel h2 {
-        font-size: clamp(2rem, 4vw, 3rem);
-        margin-bottom: 18px;
-      }
-
-      .panel p {
+      .nav-list,
+      .side-list {
         margin: 0;
-        color: var(--muted);
-        line-height: 1.85;
-      }
-
-      .intro {
-        grid-column: span 7;
-      }
-
-      .snapshot {
-        grid-column: span 5;
-      }
-
-      .stack {
-        display: grid;
-        gap: 14px;
-        margin-top: 18px;
-      }
-
-      .stack-card {
-        padding: 18px;
-        border-radius: 20px;
-        background: rgba(255, 255, 255, 0.58);
-        border: 1px solid var(--line);
-      }
-
-      .stack-card strong {
-        display: block;
-        margin-bottom: 8px;
-        font-size: 1rem;
-      }
-
-      .todo {
-        grid-column: span 6;
-      }
-
-      .links {
-        grid-column: span 6;
-      }
-
-      .checklist,
-      .link-list {
-        display: grid;
-        gap: 14px;
-        margin: 22px 0 0;
         padding: 0;
         list-style: none;
       }
 
-      .checklist li,
-      .link-list a {
+      .nav-item {
+        margin-bottom: 2px;
+      }
+
+      .nav-link {
         display: block;
-        padding: 16px 18px;
-        border-radius: 18px;
-        border: 1px solid var(--line);
-        background: rgba(255, 255, 255, 0.58);
+        padding: 7px 9px;
+        border-radius: 6px;
+        color: #44403c;
+        font-size: 0.92rem;
       }
 
-      .checklist li {
-        color: var(--muted);
+      .nav-link:hover {
+        background: #f0efed;
+        color: var(--text-primary);
       }
 
-      .checklist strong,
-      .link-list strong {
+      .nav-link.active {
+        background: #e7e5e4;
+        color: var(--text-primary);
+        font-weight: 600;
+      }
+
+      .side-card {
+        padding-top: 14px;
+        border-top: 1px solid var(--border);
+      }
+
+      .side-list {
+        display: grid;
+        gap: 8px;
+      }
+
+      .side-list li {
+        color: var(--text-secondary);
+        font-size: 0.85rem;
+      }
+
+      .side-note {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 8px;
+        padding: 5px 10px;
+        border-radius: 999px;
+        background: #fff;
+        border: 1px solid var(--border);
+        color: var(--text-secondary);
+        font-size: 0.76rem;
+      }
+
+      .side-note::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: #0f766e;
+      }
+
+      .main-content {
+        width: calc(100% - var(--sidebar-width));
+        margin-left: var(--sidebar-width);
+        padding: 40px 36px 80px;
+      }
+
+      .page-header,
+      .page-section {
+        max-width: var(--max-width);
+        margin: 0 auto;
+      }
+
+      .page-header {
+        margin-bottom: 24px;
+      }
+
+      .hero-banner {
+        padding: 28px;
+        border: 1px solid var(--border);
+        border-left: 4px solid var(--accent);
+        border-radius: var(--radius);
+        background: var(--bg-secondary);
+      }
+
+      .eyebrow {
+        margin: 0 0 10px;
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 0.78rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+      }
+
+      .hero-title {
+        margin: 0 0 12px;
+        font-size: clamp(2.1rem, 4vw, 3.2rem);
+        line-height: 1.18;
+      }
+
+      .hero-copy {
+        margin: 0;
+        max-width: 60ch;
+        color: #44403c;
+        font-size: 1rem;
+      }
+
+      .meta,
+      .inline-actions,
+      .quick-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .meta {
+        margin-top: 16px;
+      }
+
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 5px 10px;
+        border-radius: 999px;
+        background: #fff;
+        border: 1px solid var(--border);
+        color: var(--text-secondary);
+        font-size: 0.82rem;
+      }
+
+      .hero-badge strong {
+        color: var(--text-primary);
+      }
+
+      .inline-actions {
+        margin-top: 16px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        min-height: 38px;
+        padding: 0 12px;
+        border-radius: 6px;
+        border: 1px solid var(--border-strong);
+        background: #fff;
+        color: #44403c;
+        font-size: 0.84rem;
+        font-weight: 500;
+      }
+
+      .btn.primary {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: #fff;
+      }
+
+      .btn:hover {
+        border-color: #a8a29e;
+        color: var(--text-primary);
+      }
+
+      .btn.primary:hover {
+        background: var(--accent-hover);
+        color: #fff;
+      }
+
+      .quick-grid {
+        margin-top: 18px;
+      }
+
+      .quick-card {
+        flex: 1 1 220px;
+        min-width: 0;
+        padding: 14px 16px;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        background: #fff;
+      }
+
+      .quick-label {
         display: block;
         margin-bottom: 6px;
-        color: var(--ink);
+        color: var(--text-muted);
+        font-size: 0.76rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
       }
 
-      .link-list a {
-        transition: transform 0.2s ease, background 0.2s ease;
+      .quick-card strong {
+        display: block;
+        margin-bottom: 4px;
+        font-size: 1rem;
       }
 
-      .link-list a:hover {
-        transform: translateY(-2px);
-        background: rgba(255, 255, 255, 0.78);
+      .quick-card span {
+        color: var(--text-secondary);
+        font-size: 0.88rem;
       }
 
-      .footer {
+      .page-section {
+        margin-bottom: 40px;
+      }
+
+      .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 12px;
+        margin-bottom: 16px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--border);
+      }
+
+      .section-title {
+        margin: 0;
+        font-size: 1.45rem;
+        line-height: 1.2;
+      }
+
+      .section-subtitle {
+        margin: 0;
+        color: var(--text-muted);
+        font-size: 0.82rem;
+      }
+
+      .cards {
+        display: grid;
+        gap: 14px;
+      }
+
+      .cards.two {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .cards.three {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .card {
+        padding: 18px 20px;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        background: var(--bg-card);
+      }
+
+      .card:hover {
+        border-color: var(--border-strong);
+      }
+
+      .card.wide {
+        grid-column: 1 / -1;
+      }
+
+      .card-head {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 12px;
-        margin-top: 18px;
-        padding: 10px 4px 0;
-        color: var(--muted);
-        font-size: 0.94rem;
+        gap: 10px;
+        margin-bottom: 10px;
       }
 
-      .footer strong {
-        color: var(--ink);
+      .card-type {
+        display: inline-flex;
+        align-items: center;
+        padding: 2px 8px;
+        border-radius: 4px;
+        background: var(--accent-soft);
+        color: var(--accent);
+        font-size: 0.75rem;
+        font-weight: 600;
       }
 
-      @keyframes rise {
-        from {
-          opacity: 0;
-          transform: translateY(16px);
+      .card-date {
+        color: var(--text-muted);
+        font-size: 0.8rem;
+      }
+
+      .card-title {
+        margin: 0 0 8px;
+        font-size: 1.1rem;
+        line-height: 1.35;
+      }
+
+      .card-copy,
+      .bullet-list li,
+      .timeline-body,
+      .kv-desc {
+        color: var(--text-secondary);
+        font-size: 0.92rem;
+      }
+
+      .card-copy {
+        margin: 0;
+      }
+
+      .bullet-list,
+      .timeline-list,
+      .kv-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 10px;
+      }
+
+      .bullet-list li {
+        position: relative;
+        padding-left: 14px;
+      }
+
+      .bullet-list li::before {
+        content: "•";
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: var(--accent);
+      }
+
+      .timeline-item {
+        display: grid;
+        grid-template-columns: 140px 1fr;
+        gap: 14px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid #f0efed;
+      }
+
+      .timeline-item:last-child {
+        padding-bottom: 0;
+        border-bottom: 0;
+      }
+
+      .timeline-date {
+        font-size: 0.82rem;
+        color: #78716c;
+        font-weight: 600;
+      }
+
+      .kv-item {
+        display: grid;
+        grid-template-columns: 90px 1fr;
+        gap: 10px;
+        padding-bottom: 8px;
+        border-bottom: 1px dashed var(--border);
+      }
+
+      .kv-item:last-child {
+        padding-bottom: 0;
+        border-bottom: 0;
+      }
+
+      .kv-term {
+        color: #78716c;
+        font-size: 0.84rem;
+        font-weight: 600;
+      }
+
+      .tag-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 12px;
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        padding: 3px 8px;
+        border-radius: 4px;
+        background: #f5f5f4;
+        color: var(--text-secondary);
+        font-size: 0.76rem;
+      }
+
+      .back-to-top {
+        position: fixed;
+        right: 24px;
+        bottom: 24px;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 12px;
+        border-radius: 6px;
+        border: 1px solid var(--border-strong);
+        background: #fff;
+        color: #44403c;
+        font-size: 0.8rem;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.2s ease;
+      }
+
+      .back-to-top.visible {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .mobile-toggle {
+        display: none;
+        position: fixed;
+        top: 12px;
+        left: 12px;
+        z-index: 30;
+        width: 42px;
+        height: 42px;
+        border: 1px solid var(--border-strong);
+        border-radius: 6px;
+        background: #fff;
+        color: #44403c;
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 1rem;
+      }
+
+      @media (max-width: 1140px) {
+        .sidebar {
+          transform: translateX(-100%);
+          transition: transform 0.2s ease;
         }
 
-        to {
-          opacity: 1;
-          transform: translateY(0);
+        .sidebar.open {
+          transform: translateX(0);
+        }
+
+        .main-content {
+          width: 100%;
+          margin-left: 0;
+          padding: 64px 16px 72px;
+        }
+
+        .mobile-toggle {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
         }
       }
 
-      @media (max-width: 920px) {
-        .hero-grid,
-        .content-grid {
+      @media (max-width: 860px) {
+        .cards.two,
+        .cards.three {
           grid-template-columns: 1fr;
         }
 
-        .intro,
-        .snapshot,
-        .todo,
-        .links {
-          grid-column: auto;
+        .timeline-item,
+        .kv-item {
+          grid-template-columns: 1fr;
+          gap: 4px;
         }
 
-        .hero-top,
-        .footer {
+        .section-header {
           flex-direction: column;
           align-items: flex-start;
-        }
-      }
-
-      @media (max-width: 640px) {
-        .page {
-          width: min(100% - 20px, 1120px);
-          padding-top: 18px;
-        }
-
-        .hero,
-        .panel {
-          padding: 22px;
-          border-radius: 24px;
-        }
-
-        h1 {
-          font-size: clamp(3.3rem, 18vw, 5rem);
-        }
-
-        .mini-nav {
-          flex-wrap: wrap;
         }
       }
     </style>
   </head>
   <body>
-    <div class="page">
-      <header class="hero" id="top">
-        <div class="hero-top">
-          <div class="badge">Personal Site on GitHub Pages</div>
-          <nav class="mini-nav" aria-label="바로가기">
-            <a href="#about">소개</a>
-            <a href="#next">다음 수정</a>
-            <a href="#links">링크</a>
-          </nav>
-        </div>
-
-        <div class="hero-grid">
-          <section>
-            <p class="eyebrow">Hello, this is</p>
-            <h1>Jisu47</h1>
-            <p class="lead">
-              작업 기록과 링크를 차분하게 쌓아가는 개인 페이지입니다.
-              GitHub Pages로 배포했고, 앞으로 소개와 프로젝트를 여기에 정리해둘 수 있습니다.
-            </p>
-            <div class="actions">
-              <a class="button primary" href="https://github.com/Jisu47" target="_blank" rel="noreferrer">
-                GitHub 프로필
-              </a>
-              <a
-                class="button secondary"
-                href="https://github.com/Jisu47/jisu47.github.io"
-                target="_blank"
-                rel="noreferrer"
-              >
-                사이트 소스 보기
-              </a>
-            </div>
-          </section>
-
-          <aside class="hero-card" aria-label="현재 상태">
-            <p>기본 배포는 끝났고, 이제 이 페이지를 실제 소개 페이지로 채우기만 하면 됩니다.</p>
-            <div class="status-list">
-              <div class="status-item">
-                <span>상태</span>
-                <strong>배포 완료</strong>
-              </div>
-              <div class="status-item">
-                <span>주소</span>
-                <strong>jisu47.github.io</strong>
-              </div>
-              <div class="status-item">
-                <span>현재 구조</span>
-                <strong>단일 HTML 정적 페이지</strong>
-              </div>
-            </div>
-          </aside>
-        </div>
-      </header>
-
-      <main class="content-grid">
-        <section class="panel intro" id="about">
-          <h2>이 페이지는</h2>
-          <p>
-            처음 방문한 사람이 누군지, 어디를 보면 되는지 바로 이해할 수 있도록 구성했습니다.
-            복잡한 프레임워크 없이 <code>index.html</code> 하나만 수정하면 되기 때문에 유지도 단순합니다.
-            소개 문장, 프로젝트 카드, 연락 링크만 추가해도 충분히 개인 사이트 역할을 합니다.
+    <div class="layout-wrapper">
+      <aside class="sidebar" id="sidebar">
+        <div class="profile-section">
+          <div class="profile-avatar" aria-hidden="true">J47</div>
+          <h1 class="profile-name">Jisu47</h1>
+          <p class="profile-title">
+            Personal site on GitHub Pages<br>
+            Structured like a research or portfolio homepage<br>
+            Updated on March 10, 2026
           </p>
+
+          <div class="social-links">
+            <a class="social-link" href="https://github.com/Jisu47" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="social-link" href="https://jisu47.github.io" target="_blank" rel="noreferrer">Site</a>
+            <a class="social-link" href="https://github.com/Jisu47/jisu47.github.io" target="_blank" rel="noreferrer">Repo</a>
+          </div>
+        </div>
+
+        <nav class="nav-section" aria-label="Section navigation">
+          <p class="nav-title">Navigation</p>
+          <ul class="nav-list">
+            <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+            <li class="nav-item"><a class="nav-link" href="#focus">Focus</a></li>
+            <li class="nav-item"><a class="nav-link" href="#updates">Updates</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <section class="side-card" aria-label="Current status">
+          <p class="side-card-title">Status</p>
+          <ul class="side-list">
+            <li>Live at jisu47.github.io</li>
+            <li>Single-file static page</li>
+            <li>Ready for personal content</li>
+          </ul>
+          <div class="side-note">Published and reachable</div>
         </section>
 
-        <section class="panel snapshot" aria-label="활용 아이디어">
-          <h2>활용 방법</h2>
-          <div class="stack">
-            <div class="stack-card">
-              <strong>소개</strong>
-              한 줄 소개와 현재 관심사, 사용하는 기술을 적어두면 시작 페이지가 됩니다.
+        <section class="side-card" aria-label="Next edits">
+          <p class="side-card-title">Next Edits</p>
+          <ul class="side-list">
+            <li>Replace the placeholder project cards with real repositories.</li>
+            <li>Add your email or blog once you want direct contact links.</li>
+            <li>Turn major cards into separate project pages later if needed.</li>
+          </ul>
+        </section>
+      </aside>
+
+      <button class="mobile-toggle" id="mobile-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+        Menu
+      </button>
+
+      <main class="main-content">
+        <header class="page-header" id="home">
+          <div class="hero-banner">
+            <p class="eyebrow">Inspired by a structured academic homepage</p>
+            <h2 class="hero-title">A cleaner profile-first layout for Jisu47</h2>
+            <p class="hero-copy">
+              This version borrows the main strengths of the reference site: a fixed profile sidebar,
+              compact navigation, understated cards, and long-form sections that can scale from a simple
+              personal page into a full archive of projects, notes, and links.
+            </p>
+
+            <div class="meta">
+              <span class="hero-badge"><strong>Layout</strong> fixed sidebar + section cards</span>
+              <span class="hero-badge"><strong>Tone</strong> quiet, editorial, neutral</span>
+              <span class="hero-badge"><strong>Stack</strong> plain HTML, CSS, and JavaScript</span>
             </div>
-            <div class="stack-card">
-              <strong>프로젝트</strong>
-              GitHub 저장소, 데모 링크, 짧은 설명만 넣어도 포트폴리오처럼 보입니다.
+
+            <div class="inline-actions">
+              <a class="btn primary" href="https://github.com/Jisu47" target="_blank" rel="noreferrer">Open GitHub profile</a>
+              <a class="btn" href="https://github.com/Jisu47/jisu47.github.io" target="_blank" rel="noreferrer">View site repository</a>
             </div>
-            <div class="stack-card">
-              <strong>연결</strong>
-              이메일, 블로그, SNS를 추가해 방문자가 바로 연락할 수 있게 만들 수 있습니다.
+
+            <div class="quick-grid">
+              <article class="quick-card">
+                <span class="quick-label">Live site</span>
+                <strong>jisu47.github.io</strong>
+                <span>The page is already deployed on GitHub Pages.</span>
+              </article>
+              <article class="quick-card">
+                <span class="quick-label">Current purpose</span>
+                <strong>Personal landing page</strong>
+                <span>Use it as a profile, portfolio, notes hub, or archive.</span>
+              </article>
+              <article class="quick-card">
+                <span class="quick-label">Best next step</span>
+                <strong>Add real work</strong>
+                <span>Swap the placeholder cards below with your own projects.</span>
+              </article>
             </div>
+          </div>
+        </header>
+
+        <section class="page-section" id="about">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">About</h2>
+              <p class="section-subtitle">Profile summary</p>
+            </div>
+          </div>
+
+          <div class="cards two">
+            <article class="card">
+              <h3 class="card-title">What changed from the previous version</h3>
+              <p class="card-copy">
+                The old page was a single centered hero block. This redesign moves your identity and links
+                into a permanent sidebar, then turns the rest of the page into readable sections with a more
+                durable information architecture.
+              </p>
+            </article>
+
+            <article class="card">
+              <h3 class="card-title">Why this structure works</h3>
+              <p class="card-copy">
+                It stays simple enough for GitHub Pages, but it feels closer to a portfolio or lab homepage.
+                You can keep adding cards, notes, and links without redesigning the whole site every time.
+              </p>
+            </article>
           </div>
         </section>
 
-        <section class="panel todo" id="next">
-          <h2>다음 수정</h2>
-          <ul class="checklist">
-            <li>
-              <strong>문장 바꾸기</strong>
-              현재 소개 문장을 본인 소개와 활동 내용으로 바꾸면 페이지 성격이 분명해집니다.
-            </li>
-            <li>
-              <strong>프로젝트 추가</strong>
-              대표 저장소 2~3개만 골라 제목, 설명, 링크를 넣는 것이 가장 효과적입니다.
-            </li>
-            <li>
-              <strong>연락처 연결</strong>
-              GitHub 외에 메일이나 블로그 주소를 추가하면 방문 동선이 훨씬 좋아집니다.
-            </li>
-          </ul>
+        <section class="page-section" id="projects">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">Projects</h2>
+              <p class="section-subtitle">Featured slots</p>
+            </div>
+          </div>
+
+          <div class="cards two">
+            <article class="card wide">
+              <div class="card-head">
+                <span class="card-type">Featured</span>
+                <span class="card-date">March 10, 2026</span>
+              </div>
+              <h3 class="card-title">This GitHub Pages site</h3>
+              <p class="card-copy">
+                The site itself is now treated like a real project. It has a deploy pipeline through GitHub
+                Pages, a reference-inspired layout, responsive navigation, and room for future expansions such
+                as dedicated project pages or a writing archive.
+              </p>
+              <div class="inline-actions">
+                <a class="btn primary" href="https://jisu47.github.io" target="_blank" rel="noreferrer">Open live site</a>
+                <a class="btn" href="https://github.com/Jisu47/jisu47.github.io" target="_blank" rel="noreferrer">Open source</a>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card-head">
+                <span class="card-type">Profile</span>
+                <span class="card-date">Available now</span>
+              </div>
+              <h3 class="card-title">GitHub hub</h3>
+              <p class="card-copy">
+                Use your main GitHub profile as the first destination for repositories, activity, and public
+                code history until you select a smaller set of featured work.
+              </p>
+              <div class="tag-row">
+                <span class="tag">Repositories</span>
+                <span class="tag">Commits</span>
+                <span class="tag">Pinned work</span>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card-head">
+                <span class="card-type">Placeholder</span>
+                <span class="card-date">Replace next</span>
+              </div>
+              <h3 class="card-title">Your next featured project</h3>
+              <p class="card-copy">
+                Replace this card with a real repository, a deployed app, or a project summary once you decide
+                what should sit at the center of your personal site.
+              </p>
+              <div class="tag-row">
+                <span class="tag">Demo link</span>
+                <span class="tag">Short summary</span>
+                <span class="tag">Tech stack</span>
+              </div>
+            </article>
+          </div>
         </section>
 
-        <section class="panel links" id="links">
-          <h2>링크</h2>
-          <div class="link-list">
-            <a href="https://jisu47.github.io" target="_blank" rel="noreferrer">
-              <strong>Live Site</strong>
-              https://jisu47.github.io
-            </a>
-            <a href="https://github.com/Jisu47" target="_blank" rel="noreferrer">
-              <strong>GitHub Profile</strong>
-              github.com/Jisu47
-            </a>
-            <a href="https://github.com/Jisu47/jisu47.github.io" target="_blank" rel="noreferrer">
-              <strong>Repository</strong>
-              github.com/Jisu47/jisu47.github.io
-            </a>
+        <section class="page-section" id="focus">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">Focus</h2>
+              <p class="section-subtitle">How this site can grow</p>
+            </div>
+          </div>
+
+          <div class="cards three">
+            <article class="card">
+              <div class="card-head">
+                <span class="card-type">Profile</span>
+              </div>
+              <h3 class="card-title">Identity first</h3>
+              <p class="card-copy">
+                The sidebar keeps your name, links, and page structure visible at all times, which makes the
+                site feel grounded even before you add a large amount of content.
+              </p>
+            </article>
+
+            <article class="card">
+              <div class="card-head">
+                <span class="card-type">Archive</span>
+              </div>
+              <h3 class="card-title">Section-based growth</h3>
+              <p class="card-copy">
+                You can keep extending the page by adding project cards, note cards, reading logs, or release
+                updates without changing the overall design language.
+              </p>
+            </article>
+
+            <article class="card">
+              <div class="card-head">
+                <span class="card-type">Delivery</span>
+              </div>
+              <h3 class="card-title">Low maintenance</h3>
+              <p class="card-copy">
+                The implementation stays lightweight: one HTML file, a small amount of JavaScript, and no build
+                step. That makes it easy to keep publishing from GitHub.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="page-section" id="updates">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">Updates</h2>
+              <p class="section-subtitle">Site timeline</p>
+            </div>
+          </div>
+
+          <div class="cards two">
+            <article class="card">
+              <h3 class="card-title">Recent changes</h3>
+              <ul class="timeline-list">
+                <li class="timeline-item">
+                  <div class="timeline-date">2026-03-10</div>
+                  <div class="timeline-body">Created the GitHub Pages repository and published the first live version.</div>
+                </li>
+                <li class="timeline-item">
+                  <div class="timeline-date">2026-03-10</div>
+                  <div class="timeline-body">Reworked the page into a polished landing page with stronger visual hierarchy.</div>
+                </li>
+                <li class="timeline-item">
+                  <div class="timeline-date">2026-03-10</div>
+                  <div class="timeline-body">Applied a sidebar-driven layout inspired by the reference homepage you shared.</div>
+                </li>
+              </ul>
+            </article>
+
+            <article class="card">
+              <h3 class="card-title">What to replace next</h3>
+              <ul class="bullet-list">
+                <li>Change the hero text so it describes you instead of the redesign.</li>
+                <li>Swap placeholder cards for your actual repositories or work samples.</li>
+                <li>Add one direct contact method once you want inbound messages.</li>
+                <li>Split major sections into separate pages only after content grows.</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="page-section" id="contact">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">Contact</h2>
+              <p class="section-subtitle">Ways to connect</p>
+            </div>
+          </div>
+
+          <div class="cards two">
+            <article class="card">
+              <h3 class="card-title">Current links</h3>
+              <div class="kv-list">
+                <div class="kv-item">
+                  <div class="kv-term">GitHub</div>
+                  <div class="kv-desc"><a href="https://github.com/Jisu47" target="_blank" rel="noreferrer">github.com/Jisu47</a></div>
+                </div>
+                <div class="kv-item">
+                  <div class="kv-term">Site</div>
+                  <div class="kv-desc"><a href="https://jisu47.github.io" target="_blank" rel="noreferrer">jisu47.github.io</a></div>
+                </div>
+                <div class="kv-item">
+                  <div class="kv-term">Repo</div>
+                  <div class="kv-desc"><a href="https://github.com/Jisu47/jisu47.github.io" target="_blank" rel="noreferrer">github.com/Jisu47/jisu47.github.io</a></div>
+                </div>
+              </div>
+            </article>
+
+            <article class="card">
+              <h3 class="card-title">Customization note</h3>
+              <p class="card-copy">
+                This design is intentionally structured so you can keep it as a personal homepage, but it can
+                also shift into a project portfolio, a writing index, or a studio-style profile with only text
+                edits and a few extra cards.
+              </p>
+            </article>
           </div>
         </section>
       </main>
 
-      <footer class="footer">
-        <span>Built with GitHub Pages</span>
-        <strong>Jisu47</strong>
-      </footer>
+      <a class="back-to-top" id="back-to-top" href="#home" aria-label="Back to top">Top</a>
     </div>
+
+    <script>
+      const sidebar = document.getElementById("sidebar");
+      const mobileToggle = document.getElementById("mobile-toggle");
+      const backToTop = document.getElementById("back-to-top");
+      const navLinks = document.querySelectorAll(".nav-link");
+      const sections = document.querySelectorAll("main section[id], main header[id]");
+
+      mobileToggle.addEventListener("click", function () {
+        const isOpen = sidebar.classList.toggle("open");
+        mobileToggle.setAttribute("aria-expanded", String(isOpen));
+      });
+
+      navLinks.forEach(function (link) {
+        const href = link.getAttribute("href");
+        if (!href || !href.startsWith("#")) {
+          return;
+        }
+
+        link.addEventListener("click", function (event) {
+          const target = document.querySelector(href);
+          if (!target) {
+            return;
+          }
+
+          event.preventDefault();
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+
+          if (window.innerWidth <= 1140) {
+            sidebar.classList.remove("open");
+            mobileToggle.setAttribute("aria-expanded", "false");
+          }
+        });
+      });
+
+      function updateActiveSection() {
+        const scrollY = window.scrollY + 160;
+        let activeId = "#home";
+
+        sections.forEach(function (section) {
+          if (scrollY >= section.offsetTop) {
+            activeId = "#" + section.id;
+          }
+        });
+
+        navLinks.forEach(function (link) {
+          link.classList.toggle("active", link.getAttribute("href") === activeId);
+        });
+
+        if (window.scrollY > 320) {
+          backToTop.classList.add("visible");
+        } else {
+          backToTop.classList.remove("visible");
+        }
+      }
+
+      window.addEventListener("scroll", updateActiveSection);
+      window.addEventListener("load", updateActiveSection);
+    </script>
   </body>
 </html>
