@@ -146,19 +146,12 @@ on public.board_posts
 for insert
 to anon, authenticated
 with check (
-  status = 'published'
-  and is_pinned = false
+  coalesce(status, 'published') = 'published'
+  and coalesce(is_pinned, false) = false
   and char_length(btrim(author_name)) between 1 and 40
   and (title is null or char_length(btrim(title)) between 1 and 120)
   and char_length(btrim(body)) between 1 and 1000
   and (link_url is null or link_url ~* '^https?://')
-  and metadata = '{}'::jsonb
-  and created_at >= now() - interval '5 minutes'
-  and created_at <= now() + interval '5 minutes'
-  and updated_at >= now() - interval '5 minutes'
-  and updated_at <= now() + interval '5 minutes'
-  and published_at >= now() - interval '5 minutes'
-  and published_at <= now() + interval '5 minutes'
 );
 
 create policy "public cannot update board posts"

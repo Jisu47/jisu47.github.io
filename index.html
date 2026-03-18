@@ -495,21 +495,17 @@
           return;
         }
 
-        const now = new Date().toISOString();
-
         boardSubmit.disabled = true;
         boardRefresh.disabled = true;
         setBoardStatus("게시글을 등록하는 중입니다.");
 
         const { error } = await supabaseClient.from("board_posts").insert({
+          status: "published",
+          is_pinned: false,
           author_name: authorName,
           title: title || null,
           body,
           link_url: linkUrl || null,
-          created_at: now,
-          updated_at: now,
-          published_at: now,
-          metadata: {},
         });
 
         boardSubmit.disabled = false;
