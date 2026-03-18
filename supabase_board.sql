@@ -9,6 +9,8 @@
 --      body
 --      optional link_url
 -- 4. Create pinned or hidden posts in the Dashboard / SQL Editor only.
+-- 5. To enable site-side moderation, create a Supabase Auth admin user
+--    and register that email in public.board_admins.
 --
 -- Notes:
 -- - This file is safe for a fresh setup and also migrates the earlier
@@ -44,6 +46,39 @@ $$;
 
 revoke execute on function public.set_updated_at() from public;
 revoke execute on function public.set_updated_at() from anon, authenticated;
+
+create table if not exists public.board_admins (
+  email text primary key,
+  created_at timestamptz not null default now()
+);
+
+alter table public.board_admins
+  drop constraint if exists board_admins_email_chk;
+
+alter table public.board_admins
+  add constraint board_admins_email_chk
+    check (position('@' in btrim(email)) > 1);
+
+alter table public.board_admins enable row level security;
+
+revoke all on table public.board_admins from anon, authenticated;
+
+create or replace function public.is_board_admin()
+returns boolean
+language sql
+security definer
+stable
+set search_path = ''
+as $$
+  select exists (
+    select 1
+    from public.board_admins
+    where lower(email) = lower(coalesce(auth.jwt() ->> 'email', ''))
+  );
+$$;
+
+revoke all on function public.is_board_admin() from public;
+grant execute on function public.is_board_admin() to anon, authenticated;
 
 create table if not exists public.board_posts (
   id uuid primary key default gen_random_uuid(),
@@ -129,11 +164,36 @@ alter table public.board_posts enable row level security;
 drop policy if exists "public can read published board posts" on public.board_posts;
 drop policy if exists "public can insert guestbook posts only" on public.board_posts;
 drop policy if exists "public can insert board posts only" on public.board_posts;
+drop policy if exists "board admins can hide board posts" on public.board_posts;
 drop policy if exists "public cannot update board posts" on public.board_posts;
 drop policy if exists "public cannot delete board posts" on public.board_posts;
 
 revoke all on table public.board_posts from anon, authenticated;
 grant select, insert on table public.board_posts to anon, authenticated;
+
+create or replace function public.hide_board_post(target_post_id uuid)
+returns boolean
+language plpgsql
+security definer
+set search_path = ''
+as $$
+begin
+  if not public.is_board_admin() then
+    raise exception 'not authorized to hide board posts';
+  end if;
+
+  update public.board_posts
+  set status = 'hidden'
+  where id = target_post_id
+    and status <> 'hidden';
+
+  return found;
+end;
+$$;
+
+revoke all on function public.hide_board_post(uuid) from public;
+revoke all on function public.hide_board_post(uuid) from anon;
+grant execute on function public.hide_board_post(uuid) to authenticated;
 
 create policy "public can read published board posts"
 on public.board_posts
@@ -198,6 +258,15 @@ comment on table public.board_posts is
 comment on view public.board_feed is
 'Public read-only feed view for the site board.';
 
+comment on table public.board_admins is
+'Emails allowed to hide posts on the public board.';
+
+comment on function public.is_board_admin() is
+'Returns true when the current authenticated user can moderate the board.';
+
+comment on function public.hide_board_post(uuid) is
+'Soft deletes a board post by setting its status to hidden.';
+
 insert into public.board_posts (
   author_name,
   title,
@@ -223,3 +292,11 @@ where not exists (
 -- select *
 -- from public.board_feed
 -- order by is_pinned desc, sort_time desc;
+--
+-- Example admin setup:
+-- insert into public.board_admins (email)
+-- values ('admin@example.com')
+-- on conflict (email) do nothing;
+--
+-- Example admin hide:
+-- select public.hide_board_post('00000000-0000-0000-0000-000000000000'::uuid);
