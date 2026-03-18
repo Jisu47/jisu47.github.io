@@ -1,0 +1,330 @@
+﻿<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+      name="description"
+      content="Jisu47 개인 사이트. 소개, 작업 분야, 프로젝트, 기록, 연락처를 정리한 GitHub Pages 홈페이지입니다."
+    >
+    <meta name="theme-color" content="#ECECEC">
+    <title>Jisu47 | 개인 사이트</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    >
+    <style>
+      :root{--bg:#ECECEC;--paper:rgba(255,255,255,.72);--card:rgba(255,255,255,.64);--ink:#492828;--soft:rgba(73,40,40,.76);--muted:rgba(73,40,40,.56);--line:rgba(73,40,40,.14);--accent:#84934A;--accent-deep:#656D3F;--accent-soft:rgba(132,147,74,.14);--accent-brown:#492828;--side:308px;--shadow:0 18px 42px rgba(73,40,40,.09)}
+      *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;font-family:"IBM Plex Sans KR",sans-serif;line-height:1.72;color:var(--ink);background:radial-gradient(circle at 0 0,rgba(132,147,74,.18),transparent 26%),radial-gradient(circle at 100% 12%,rgba(101,109,63,.15),transparent 22%),linear-gradient(180deg,#f6f6f6 0%,var(--bg) 100%)}body::before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(rgba(73,40,40,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(73,40,40,.04) 1px,transparent 1px);background-size:30px 30px;mask-image:linear-gradient(180deg,rgba(0,0,0,.5),transparent 84%)}a{color:inherit;text-decoration:none}
+      .shell{display:flex;min-height:100vh}.sidebar{position:fixed;inset:0 auto 0 0;width:var(--side);overflow:auto;padding:24px 20px;background:rgba(248,248,248,.92);border-right:1px solid var(--line);backdrop-filter:blur(18px);z-index:20}.panel,.profile{padding:18px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(180deg,rgba(255,255,255,.94),rgba(247,247,243,.9));box-shadow:var(--shadow)}.stack{display:grid;gap:16px}.mark{display:grid;place-items:center;width:76px;height:76px;border-radius:24px;background:linear-gradient(145deg,var(--accent),var(--accent-deep));color:#fff;font-family:"IBM Plex Mono",monospace;font-size:1.5rem;letter-spacing:.08em}.name{margin:14px 0 0;font-family:"Fraunces",serif;font-size:1.95rem;line-height:1}.role{margin:10px 0 0;color:var(--soft);font-size:.94rem}.meta,.nav,.snapshot,.bullets,.timeline,.contact-list{margin:0;padding:0;list-style:none}.meta{display:grid;gap:8px;margin-top:16px}.meta li{display:flex;justify-content:space-between;gap:12px;padding-bottom:7px;border-bottom:1px dashed var(--line);font-size:.83rem;color:var(--soft)}.meta li:last-child{padding-bottom:0;border-bottom:0}.meta strong{color:var(--ink)}.links,.chips,.actions,.stats,.tags,.project-links{display:flex;flex-wrap:wrap;gap:10px}.pill,.action,.tag{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:0 12px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.76);font-size:.8rem}.pill:hover,.action.secondary:hover,.timeline a:hover{border-color:rgba(73,40,40,.3);color:var(--ink)}.tiny{margin:0 0 10px;font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}.nav{display:grid;gap:6px}.nav a{display:flex;justify-content:space-between;gap:10px;padding:10px 12px;border-radius:12px;color:var(--soft)}.nav a:hover,.nav a.active{background:var(--accent-soft);color:var(--ink)}.nav span:last-child{font-family:"IBM Plex Mono",monospace;font-size:.7rem;color:var(--muted)}.snapshot{display:grid;gap:10px}.snapshot li{padding:12px 14px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.68)}.snapshot strong{display:block;font-size:.95rem}.snapshot span,.note,.card p,.focus p,.project p,.contact-card p,.timeline p{color:var(--soft);font-size:.9rem}.note{margin-top:12px;font-size:.82rem}
+      .main{width:calc(100% - var(--side));margin-left:var(--side);padding:32px 28px 84px}.page{max-width:1040px;margin:0 auto}.hero,.section{margin-bottom:28px;padding:26px;border:1px solid var(--line);border-radius:28px;background:var(--paper);box-shadow:var(--shadow)}.hero{position:relative;background:radial-gradient(circle at top right,rgba(132,147,74,.18),transparent 26%),radial-gradient(circle at bottom left,rgba(101,109,63,.12),transparent 28%),linear-gradient(180deg,rgba(255,255,255,.92),rgba(242,242,239,.88))}.hero::after{content:"";position:absolute;top:26px;right:26px;width:156px;height:156px;border-radius:28px;border:1px solid rgba(101,109,63,.18);background:linear-gradient(145deg,rgba(255,255,255,.82),rgba(132,147,74,.08)),repeating-linear-gradient(135deg,rgba(132,147,74,.12),rgba(132,147,74,.12) 10px,transparent 10px,transparent 20px)}.eyebrow{margin:0 0 12px;font-family:"IBM Plex Mono",monospace;font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-deep)}.hero h1{position:relative;z-index:1;max-width:13ch;margin:0;font-family:"Fraunces",serif;font-size:clamp(2.7rem,6vw,4.6rem);line-height:1;letter-spacing:-.04em}.hero-copy{position:relative;z-index:1;max-width:62ch;margin:18px 0 0;color:var(--soft)}.chips,.actions,.stats{margin-top:20px}.action{min-height:44px;padding:0 16px;font-size:.88rem;font-weight:600}.action.primary{background:var(--accent-brown);border-color:var(--accent-brown);color:#fff}.action.primary:hover{background:#351d1d}.action.secondary{background:rgba(132,147,74,.12);border-color:rgba(101,109,63,.2);color:var(--accent-deep)}.stat{flex:1 1 220px;padding:16px 18px;border:1px solid var(--line);border-radius:20px;background:rgba(255,255,255,.72)}.stat span{display:block;margin-bottom:8px;font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}.stat strong{display:block;margin-bottom:6px;font-size:1.06rem}.stat p{margin:0;color:var(--soft);font-size:.88rem}
+      .head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--line)}.head h2{margin:0;font-family:"Fraunces",serif;font-size:clamp(1.8rem,3vw,2.3rem);line-height:1.05}.head p{margin:0;color:var(--muted);font-size:.84rem}.grid{display:grid;gap:16px}.two{grid-template-columns:repeat(2,minmax(0,1fr))}.three{grid-template-columns:repeat(3,minmax(0,1fr))}.card,.focus,.project,.contact-card,.timeline-card{padding:20px;border:1px solid var(--line);border-radius:20px;background:var(--card)}.wide{grid-column:1 / -1}.label,.focus .en,.date{display:inline-flex;align-items:center;min-height:28px;padding:0 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent-deep);font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase}.card h3,.focus h3,.project h3,.contact-card h3,.timeline h3{margin:14px 0 10px;font-size:1.14rem;line-height:1.3}.bullets{display:grid;gap:10px;margin-top:14px}.bullets li{position:relative;padding-left:16px;color:var(--soft);font-size:.9rem}.bullets li::before{content:"";position:absolute;top:.72rem;left:0;width:7px;height:7px;border-radius:999px;background:var(--accent)}.metrics{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.metrics span{display:inline-flex;align-items:center;min-height:34px;padding:0 10px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.78);font-size:.78rem;color:var(--soft)}.tags{margin-top:14px}.tag{min-height:30px;background:rgba(73,40,40,.08);border-color:transparent;color:var(--ink);font-size:.78rem;font-weight:500}.project-links{margin-top:16px}.timeline{display:grid;gap:14px}.timeline li{display:grid;grid-template-columns:136px minmax(0,1fr);gap:16px;padding:18px 0;border-top:1px solid var(--line)}.timeline li:first-child{padding-top:0;border-top:0}.timeline h3{margin:0 0 8px}.timeline a{display:inline-flex;margin-top:12px;color:var(--accent-deep);font-size:.84rem;font-weight:600}.contact-list{display:grid;gap:14px}.contact-list li{display:grid;grid-template-columns:110px minmax(0,1fr);gap:12px;padding-bottom:14px;border-bottom:1px dashed var(--line)}.contact-list li:last-child{padding-bottom:0;border-bottom:0}.term{font-size:.82rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}.desc{min-width:0;overflow-wrap:anywhere;color:var(--soft);font-size:.92rem}.desc a{color:var(--accent-deep);font-weight:600}
+      .menu,.top{position:fixed;z-index:30;border:1px solid rgba(73,40,40,.2);border-radius:999px;background:rgba(255,255,255,.86);color:var(--ink);backdrop-filter:blur(16px);box-shadow:var(--shadow)}.menu{display:none;top:16px;left:14px;min-height:44px;padding:0 14px;font-family:"IBM Plex Mono",monospace;font-size:.82rem}.top{right:20px;bottom:20px;min-height:44px;padding:0 16px;display:inline-flex;align-items:center;opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s ease,visibility .2s ease,transform .2s ease}.top.visible{opacity:1;visibility:visible;transform:translateY(0)}
+      @media (max-width:1160px){.sidebar{transform:translateX(-100%);transition:transform .22s ease}.sidebar.open{transform:translateX(0)}.menu{display:inline-flex;align-items:center;justify-content:center}.main{width:100%;margin-left:0;padding-top:76px}.hero::after{display:none}}
+      @media (max-width:860px){.two,.three,.timeline li,.contact-list li{grid-template-columns:1fr}.head{flex-direction:column;align-items:start}.hero h1{max-width:none}}
+      @media (max-width:560px){.main{padding-left:14px;padding-right:14px}.hero,.section{padding:22px}.links,.chips,.actions,.stats,.tags,.project-links{flex-direction:column}.pill,.action,.tag,.metrics span{width:100%;justify-content:center}}
+    </style>
+  </head>
+  <body>
+    <button class="menu" id="menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false">메뉴</button>
+    <div class="shell">
+      <aside class="sidebar" id="sidebar">
+        <div class="stack">
+          <section class="profile" aria-label="프로필">
+            <div class="mark" aria-hidden="true">J47</div>
+            <h1 class="name">Jisu47</h1>
+            <p class="role">개인 프로젝트와 학습 기록을 정리하는 개발자 사이트</p>
+            <ul class="meta">
+              <li><span>주요 스택</span><strong>TypeScript / HTML</strong></li>
+              <li><span>대표 작업</span><strong>Study Planner</strong></li>
+              <li><span>최근 개편</span><strong>2026-03-18</strong></li>
+            </ul>
+            <div class="links">
+              <a class="pill" href="https://github.com/Jisu47" target="_blank" rel="noreferrer">GitHub</a>
+              <a class="pill" href="https://study-planner-steel.vercel.app" target="_blank" rel="noreferrer">데모</a>
+              <a class="pill" href="https://github.com/Jisu47/jisu47.github.io" target="_blank" rel="noreferrer">사이트 저장소</a>
+            </div>
+          </section>
+
+          <nav class="panel" aria-label="섹션 탐색">
+            <p class="tiny">탐색</p>
+            <ul class="nav">
+              <li><a class="active" href="#home"><span>홈</span><span>00</span></a></li>
+              <li><a href="#about"><span>소개</span><span>01</span></a></li>
+              <li><a href="#focus"><span>작업 분야</span><span>02</span></a></li>
+              <li><a href="#projects"><span>프로젝트</span><span>03</span></a></li>
+              <li><a href="#updates"><span>기록</span><span>04</span></a></li>
+              <li><a href="#contact"><span>연락처</span><span>05</span></a></li>
+            </ul>
+          </nav>
+
+          <section class="panel" aria-label="요약">
+            <p class="tiny">요약</p>
+            <ul class="snapshot">
+              <li><strong>공개 저장소 중심</strong><span>GitHub에 공개된 작업을 기준으로 내용을 구성했습니다.</span></li>
+              <li><strong>정적 페이지 운영</strong><span>사이트는 GitHub Pages, 앱 데모는 Vercel로 분리했습니다.</span></li>
+              <li><strong>카테고리형 구조</strong><span>참고 사이트의 정보 구조를 개인 포트폴리오 형식으로 바꿨습니다.</span></li>
+            </ul>
+            <p class="note">단일 `index.html` 기반이라 수정과 배포가 빠릅니다.</p>
+          </section>
+        </div>
+      </aside>
+
+      <main class="main">
+        <div class="page">
+          <header class="hero" id="home">
+            <p class="eyebrow">Jisu47 / Personal Archive</p>
+            <h1>만든 것과 하고 있는 일을 한 화면에 정리합니다.</h1>
+            <p class="hero-copy">
+              참고 사이트의 강점인 명확한 카테고리 구조를 유지하면서, 개인 개발자 페이지에 맞게
+              소개, 작업 분야, 프로젝트, 기록, 연락처로 재구성했습니다.
+            </p>
+            <div class="chips">
+              <span class="pill">GitHub Pages</span>
+              <span class="pill">정적 HTML</span>
+              <span class="pill">Study Planner</span>
+              <span class="pill">Next.js 16</span>
+              <span class="pill">Vercel</span>
+            </div>
+            <div class="actions">
+              <a class="action primary" href="https://github.com/Jisu47" target="_blank" rel="noreferrer">GitHub 보기</a>
+              <a class="action secondary" href="https://study-planner-steel.vercel.app" target="_blank" rel="noreferrer">Study Planner 데모</a>
+            </div>
+            <div class="stats">
+              <article class="stat">
+                <span>대표 프로젝트</span>
+                <strong>Study Planner</strong>
+                <p>학습 계획 생성, 기록, 분석 화면을 갖춘 모바일 우선 프로토타입입니다.</p>
+              </article>
+              <article class="stat">
+                <span>사이트 성격</span>
+                <strong>개인 작업 아카이브</strong>
+                <p>프로필 소개보다 실제 작업과 업데이트를 먼저 보여주는 구조입니다.</p>
+              </article>
+              <article class="stat">
+                <span>운영 방식</span>
+                <strong>Pages + Vercel</strong>
+                <p>정적 사이트와 앱 데모를 분리해 관리합니다.</p>
+              </article>
+            </div>
+          </header>
+
+          <section class="section" id="about">
+            <div class="head">
+              <div><p class="eyebrow">01 / About</p><h2>소개</h2></div>
+              <p>사이트 성격과 구성 원칙</p>
+            </div>
+            <div class="grid two">
+              <article class="card">
+                <span class="label">공개 작업 기준</span>
+                <h3>확인 가능한 결과물을 먼저 배치했습니다.</h3>
+                <p>현재 페이지는 GitHub 저장소와 배포 링크를 기준으로 정리되어 있습니다.</p>
+              </article>
+              <article class="card">
+                <span class="label">확장 가능한 구조</span>
+                <h3>내용이 늘어나도 같은 틀을 유지합니다.</h3>
+                <p>사이드바와 카드 섹션 구조 덕분에 프로젝트와 노트를 계속 추가할 수 있습니다.</p>
+              </article>
+              <article class="card wide">
+                <span class="label">현재 역할</span>
+                <h3>현재 버전의 역할</h3>
+                <p>지금 페이지는 아래 세 가지 목적에 집중합니다.</p>
+                <ul class="bullets">
+                  <li>대표 프로젝트와 배포 링크 정리</li>
+                  <li>작업 주제와 업데이트 흐름 요약</li>
+                  <li>추후 상세 페이지 확장을 위한 기본 구조 확보</li>
+                </ul>
+              </article>
+            </div>
+          </section>
+
+          <section class="section" id="focus">
+            <div class="head">
+              <div><p class="eyebrow">02 / Focus Areas</p><h2>작업 분야</h2></div>
+              <p>현재 공개 작업에서 보이는 주제</p>
+            </div>
+            <div class="grid three">
+              <article class="focus"><span class="en">Prototype</span><h3>제품형 프로토타입</h3><p>백엔드보다 먼저 사용 흐름과 시연 가능성을 만듭니다.</p></article>
+              <article class="focus"><span class="en">Planning</span><h3>계획 생성 로직</h3><p>우선순위와 남은 학습량을 일정으로 연결합니다.</p></article>
+              <article class="focus"><span class="en">Analytics</span><h3>학습 분석</h3><p>누적 시간과 최근 패턴을 읽기 쉬운 지표로 보여줍니다.</p></article>
+              <article class="focus"><span class="en">Mobile UI</span><h3>모바일 우선 UI</h3><p>작은 화면에서도 바로 기록하고 확인할 수 있게 설계합니다.</p></article>
+              <article class="focus"><span class="en">Static Site</span><h3>정적 퍼블리싱</h3><p>개인 사이트는 가볍고 빠르게 유지합니다.</p></article>
+              <article class="focus"><span class="en">GitHub Flow</span><h3>GitHub 중심 운영</h3><p>코드, 문서, 데모의 역할을 분리해 보여줍니다.</p></article>
+            </div>
+          </section>
+
+          <section class="section" id="projects">
+            <div class="head">
+              <div><p class="eyebrow">03 / Projects</p><h2>프로젝트</h2></div>
+              <p>공개 저장소와 배포 결과물</p>
+            </div>
+            <div class="grid two">
+              <article class="project wide">
+                <span class="label">주요 프로젝트</span>
+                <h3>Study Planner</h3>
+                <p>과목과 시험 일정을 등록하면 우선순위 점수 기반으로 계획을 만들고, 기록과 분석 화면까지 확인할 수 있는 모바일 웹 프로토타입입니다.</p>
+                <div class="metrics">
+                  <span>Main stack: TypeScript</span>
+                  <span>Framework: Next.js 16</span>
+                  <span>Charts: Recharts</span>
+                  <span>State: localStorage</span>
+                  <span>Public update: 2026-03-13</span>
+                </div>
+                <ul class="bullets">
+                  <li>온보딩, 과목 관리, 계획 생성, 기록 입력, 분석 확인 흐름 제공</li>
+                  <li>시험일, 목표 시간, 중요도, 난이도, 최근 공부량을 함께 반영</li>
+                  <li>진행률, 최근 학습량, 과목별 추천 정보를 대시보드에서 확인 가능</li>
+                </ul>
+                <div class="tags">
+                  <span class="tag">Next.js</span>
+                  <span class="tag">Tailwind CSS v4</span>
+                  <span class="tag">Recharts</span>
+                  <span class="tag">Vitest</span>
+                  <span class="tag">Vercel</span>
+                </div>
+                <div class="project-links">
+                  <a class="action primary" href="https://study-planner-steel.vercel.app" target="_blank" rel="noreferrer">라이브 데모</a>
+                  <a class="action secondary" href="https://github.com/Jisu47/study-planner" target="_blank" rel="noreferrer">소스 보기</a>
+                </div>
+              </article>
+              <article class="project">
+                <span class="label">사이트 프로젝트</span>
+                <h3>jisu47.github.io</h3>
+                <p>현재 보고 있는 개인 사이트입니다. 참고 사이트의 카테고리 감각을 유지하면서 GitHub Pages용 정적 구조로 다시 정리했습니다.</p>
+                <div class="metrics">
+                  <span>Format: Single HTML</span>
+                  <span>Host: GitHub Pages</span>
+                  <span>Refresh: 2026-03-18</span>
+                </div>
+                <div class="project-links">
+                  <a class="action secondary" href="https://jisu47.github.io" target="_blank" rel="noreferrer">사이트 보기</a>
+                  <a class="action secondary" href="https://github.com/Jisu47/jisu47.github.io" target="_blank" rel="noreferrer">저장소 보기</a>
+                </div>
+              </article>
+              <article class="project">
+                <span class="label">확장 계획</span>
+                <h3>다음 확장 포인트</h3>
+                <p>현재 구조는 프로젝트 상세 페이지나 노트 아카이브가 추가되어도 그대로 확장할 수 있습니다.</p>
+                <ul class="bullets">
+                  <li>프로젝트별 상세 페이지 분리</li>
+                  <li>개인 노트 또는 실험 로그 섹션 추가</li>
+                  <li>직접 연락 가능한 채널 공개</li>
+                </ul>
+              </article>
+            </div>
+          </section>
+
+          <section class="section" id="updates">
+            <div class="head">
+              <div><p class="eyebrow">04 / Updates</p><h2>기록</h2></div>
+              <p>공개 활동과 이번 개편 기준</p>
+            </div>
+            <div class="timeline-card">
+              <ul class="timeline">
+                <li>
+                  <div class="date">2026-03-18</div>
+                  <div>
+                    <h3>개인 사이트를 한국어 중심 구조로 개편</h3>
+                    <p>색상 팔레트를 교체하고, 소개부터 연락처까지 모든 핵심 섹션을 다시 정리했습니다.</p>
+                    <a href="https://github.com/Jisu47/jisu47.github.io" target="_blank" rel="noreferrer">사이트 저장소 보기</a>
+                  </div>
+                </li>
+                <li>
+                  <div class="date">2026-03-13</div>
+                  <div>
+                    <h3>Study Planner 공개 업데이트 반영</h3>
+                    <p>공개 저장소 기준 최근 작업 시점을 반영했고, 데모 링크를 메인 프로젝트에 배치했습니다.</p>
+                    <a href="https://study-planner-steel.vercel.app" target="_blank" rel="noreferrer">데모 열기</a>
+                  </div>
+                </li>
+                <li>
+                  <div class="date">2026-03-10</div>
+                  <div>
+                    <h3>GitHub Pages 운영 구조 유지</h3>
+                    <p>개인 사이트는 단일 정적 파일 구조를 유지해 빠른 수정과 배포가 가능합니다.</p>
+                    <a href="https://github.com/Jisu47" target="_blank" rel="noreferrer">GitHub 프로필 보기</a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="section" id="contact">
+            <div class="head">
+              <div><p class="eyebrow">05 / Contact</p><h2>연락처</h2></div>
+              <p>현재 공개되어 있는 연결 지점</p>
+            </div>
+            <div class="grid two">
+              <article class="contact-card">
+                <h3>공개 링크</h3>
+                <ul class="contact-list">
+                  <li><div class="term">GitHub</div><div class="desc"><a href="https://github.com/Jisu47" target="_blank" rel="noreferrer">github.com/Jisu47</a></div></li>
+                  <li><div class="term">저장소</div><div class="desc"><a href="https://github.com/Jisu47/jisu47.github.io" target="_blank" rel="noreferrer">github.com/Jisu47/jisu47.github.io</a></div></li>
+                  <li><div class="term">데모</div><div class="desc"><a href="https://study-planner-steel.vercel.app" target="_blank" rel="noreferrer">study-planner-steel.vercel.app</a></div></li>
+                </ul>
+              </article>
+              <article class="contact-card">
+                <h3>운영 메모</h3>
+                <p>현재는 이메일 대신 GitHub와 데모 링크 중심으로 공개 범위를 유지하고 있습니다.</p>
+                <ul class="bullets">
+                  <li>사이트는 소개와 맥락 설명</li>
+                  <li>코드와 변경 이력은 GitHub</li>
+                  <li>앱 체험은 Vercel 데모에서 제공</li>
+                </ul>
+              </article>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <a class="top" id="back-to-top" href="#home">위로</a>
+
+    <script>
+      const sidebar = document.getElementById("sidebar");
+      const toggle = document.getElementById("menu-toggle");
+      const links = Array.from(document.querySelectorAll(".nav a"));
+      const sections = Array.from(document.querySelectorAll("header[id], section[id]"));
+      const topButton = document.getElementById("back-to-top");
+
+      function closeSidebar() {
+        sidebar.classList.remove("open");
+        toggle.setAttribute("aria-expanded", "false");
+      }
+
+      toggle.addEventListener("click", () => {
+        const open = sidebar.classList.toggle("open");
+        toggle.setAttribute("aria-expanded", String(open));
+      });
+
+      links.forEach((link) => {
+        link.addEventListener("click", () => {
+          if (window.innerWidth <= 1160) closeSidebar();
+        });
+      });
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            const id = "#" + entry.target.id;
+            links.forEach((link) => link.classList.toggle("active", link.getAttribute("href") === id));
+          });
+        },
+        { rootMargin: "-45% 0px -45% 0px", threshold: 0.01 }
+      );
+
+      sections.forEach((section) => observer.observe(section));
+
+      window.addEventListener("scroll", () => {
+        topButton.classList.toggle("visible", window.scrollY > 560);
+      });
+
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 1160) closeSidebar();
+      });
+    </script>
+  </body>
+</html>
